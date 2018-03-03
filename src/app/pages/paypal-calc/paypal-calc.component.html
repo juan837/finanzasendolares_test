@@ -1,0 +1,90 @@
+<div class="content" 
+      fxLayout="column" 
+      fxLayout.xs="column" 
+      fxLayoutAlign.
+      fxLayoutAlign="space-around center">
+      <h1 class="docs-primary-header">CALCULADORA PAYPAL</h1>
+      <p>
+            Obtén de forma facil y rapida las comisiones que debes pagar al enviar 
+            o recibir dinero a travez de paypal
+      </p>
+      
+      <!-- <mat-progress-bar mode="indeterminate" *ngIf="showLoading"></mat-progress-bar> -->
+      
+</div>
+<div class="content" 
+      fxLayout="row" 
+      fxLayout.xs="column" 
+      fxLayoutAlign.
+      fxLayoutAlign="space-around stretch"
+      class="calculate-section">
+      <mat-card fxFlex="30" fxFlex.xs="55">
+            <mat-card-header>
+                  <mat-card-title>
+                        <h3>COMISIÓN DE PAYPAL</h3>
+                  </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="body-calc-fee">
+                  <mat-form-field class="input-width">
+                        <input matInput placeholder="Porcentaje %" [(ngModel)]="paypalPorcent">
+                  </mat-form-field>
+                  <mat-icon class="icon">add circle outline</mat-icon>
+                  <mat-form-field class="input-width">
+                        <input matInput placeholder="Dólares $" [(ngModel)]="paypalDolar">
+                  </mat-form-field>
+            </mat-card-content>
+            <mat-card-footer>                
+                  <button color="primary" mat-button (click)="clean()" >REINICIAR</button>
+            </mat-card-footer>
+      </mat-card>
+      <mat-card fxFlex="30" fxFlex.xs="55">
+            <mat-card-header>
+                  <mat-card-title>
+                        <h3>DINERO QUE RECIBES</h3>
+                  </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="body-calc">
+                  <mat-form-field class="example-form-field">
+                        <input matInput type="number" placeholder="Para Recibir $ USD" [(ngModel)]="incomeMoney"/>
+                        <button color="primary" mat-button *ngIf="incomeMoney" matSuffix mat-icon-button aria-label="Clear" (click)="cleanIncome()">
+                              <mat-icon>close</mat-icon>
+                        </button>
+                  </mat-form-field>
+                  <h3 *ngIf="incomeMoneyTotal" >
+                        Hay que enviar {{ incomeMoneyTotal }} $ USD 
+                        <button mat-icon-button color="primary" (click)="copyToClipboard(incomeMoneyTotal)">
+                              <mat-icon matTooltip="Copiar resultado"  aria-label="icon">content_copy</mat-icon>
+                        </button>
+                  </h3>
+                  <h3 *ngIf="incomeMoneyComision">La Comisión es {{ incomeMoneyComision }} $ USD</h3>
+            </mat-card-content>
+            <mat-card-footer>                
+                  <button [disabled]="incomeMoney == null" color="primary" mat-button (click)="pushIncomeCalc()" >CALCULAR</button>
+            </mat-card-footer>
+      </mat-card>
+      <mat-card fxFlex="30" fxFlex.xs="55">
+            <mat-card-header>
+                  <mat-card-title>
+                        <h3>DINERO QUE ENVÍAS</h3>
+                  </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="body-calc">
+                  <mat-form-field class="example-form-field">
+                        <input matInput type="number" placeholder="Si Envias $ USD" [(ngModel)]="sendMoney"/>
+                        <button color="primary" mat-button *ngIf="sendMoney" matSuffix mat-icon-button aria-label="Clear" (click)="cleanSend()">
+                              <mat-icon>close</mat-icon>
+                        </button>
+                  </mat-form-field>
+                  <h3 *ngIf="sendMoneyTotal" >
+                        Se recibe {{ sendMoneyTotal }} $ USD 
+                        <button mat-icon-button color="primary" (click)="copyToClipboard(sendMoneyTotal)">
+                              <mat-icon matTooltip="Copiar resultado"  aria-label="icon">content_copy</mat-icon>
+                        </button>
+                  </h3>
+                  <h3 *ngIf="sendMoneyComision">La Comisión es {{ sendMoneyComision }} $ USD</h3>
+            </mat-card-content>
+            <mat-card-footer>                
+                  <button [disabled]="sendMoney == null" color="primary" mat-button (click)="pushSendCalc()" >CALCULAR</button>
+            </mat-card-footer>
+      </mat-card>
+</div>

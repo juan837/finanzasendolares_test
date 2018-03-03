@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-header>
+  <mat-card-title>
+    <h4>Login</h4>
+  </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form 
+      fxLayout="column"
+      [formGroup]="loginForm" 
+      (ngSubmit)="onSubmit(loginForm)" 
+      novalidate>
+        <h5 class="messageRegister" *ngIf="alertRegister">{{ alertRegister }}</h5>
+        <mat-form-field class="input-width">
+            <input 
+              type="email"
+              matInput placeholder="Correo" 
+              formControlName="email">
+            <mat-error *ngIf="loginForm.controls.email.hasError('required')">
+              El Correo electronico es necesario
+            </mat-error>  
+            <mat-error *ngIf="loginForm.controls.email.hasError('email')">
+              El Correo electronico no tiene el formato correo@email.com
+            </mat-error>  
+        </mat-form-field>
+        <mat-form-field class="input-width">
+            <input 
+              type="password"
+              matInput placeholder="Clave" 
+              formControlName="password">
+            <mat-error *ngIf="loginForm.controls.password.hasError('required')">
+              La clave es necesaria
+            </mat-error>  
+        </mat-form-field>
+        <button mat-button type="submit" [disabled]="loginForm.invalid" class="primary">
+          Entrar
+        </button>
+    </form>  
+  </mat-card-content>
+  <!-- <mat-card-footer>
+  <a mat-button color="primary" href="http://zipteria.com/10721743/el-hombre-mas-rico-de-babilonia" target="_blank">DESCARGAR</a>
+  </mat-card-footer> -->
+  <!-- <mat-card-actions>
+
+  </mat-card-actions> -->
+</mat-card>

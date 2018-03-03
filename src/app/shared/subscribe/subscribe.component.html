@@ -1,0 +1,38 @@
+<section class="subscribe-section">
+  <div class="content container" 
+      fxLayout="row" 
+      fxLayout.xs="column" 
+      fxLayoutAlign="space-around stretch">
+      <div fxFlex="50" fxFlex.xs="50">
+        <h1>Suscríbete</h1>
+        <p>Recibe información de finanzas personales</p>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon>check</mat-icon>
+            <h4>Tips para manejar tus finanzas personales</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>check</mat-icon>
+            <h4>Información de las plataformas para recibir pagos como PayPal y Payoneer</h4>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon>check</mat-icon>
+            <h4>Actualizaciones en las mejoras de nuestra plataforma</h4>
+          </mat-list-item>
+         </mat-list>
+      </div>
+      <div fxFlex="50" fxFlex.xs="50" >
+        <form class="form-subscribe" [formGroup]="suscribeForm" (ngSubmit)="onSubmit(suscribeForm)" fxLayout="column" novalidate>
+            <mat-form-field class="example-form-field">
+                <input matInput type="email" placeholder="Email" formControlName="email"/>
+            </mat-form-field>
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Nombre" formControlName="name"/>
+            </mat-form-field>
+            <button mat-fab color="primary" [disabled]="suscribeForm.invalid">
+                <mat-icon mat-list-icon>send</mat-icon>
+            </button>
+        </form>
+      </div>
+  </div>    
+</section>
